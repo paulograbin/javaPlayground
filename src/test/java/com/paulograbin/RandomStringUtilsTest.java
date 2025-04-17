@@ -1,7 +1,7 @@
 package com.paulograbin;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class RandomStringUtilsTest {
 
