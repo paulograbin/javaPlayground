@@ -1,14 +1,53 @@
 package com.paulograbin.asyncExecution;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public class AwaitTermination {
 
     public static void main(String[] args) throws InterruptedException {
-        killThreads();
-        allowThreadsToFinish();
+//        killThreads();
+//        allowThreadsToFinish();
+
+        useFutures();
+    }
+
+    private static void useFutures() {
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+
+        Future<Integer> future1 = executorService.submit(() -> {
+            Thread.sleep(3000);
+            return 23;
+        });
+
+        Future<Integer> future2 = executorService.submit(() -> {
+            Thread.sleep(2000);
+            return 31;
+        });
+
+        executorService.shutdown();
+
+        try {
+//            Change the timeout number below
+            if (executorService.awaitTermination(4, TimeUnit.SECONDS)) {
+                System.out.println(future1.get());
+                System.out.println(future2.get());
+            } else {
+                System.out.println("Tasks did not complete before timeout");
+            }
+
+            System.out.println("Done waiting");
+        } catch (InterruptedException e) {
+            System.err.println("Thread interrupted");
+            Thread.currentThread().interrupt();
+        } catch (ExecutionException e) {
+            System.err.println("Task execution failed " + e.getCause());
+        }
+
+        System.out.println("Execution completed");
     }
 
     public static void killThreads() throws InterruptedException {
