@@ -73,6 +73,13 @@
             <version>1.0.1.Final</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>net.fellbaum</groupId>
+            <artifactId>jemoji</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+
     </dependencies>
 
     <build>
