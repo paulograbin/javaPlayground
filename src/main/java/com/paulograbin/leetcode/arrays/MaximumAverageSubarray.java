@@ -7,24 +7,23 @@ public class MaximumAverageSubarray {
      */
     public double findMaxAverage(int[] nums, int k) {
         double sum = 0;
-        System.out.println("len is " + nums.length);
 
         for (int i = 0; i < k; i++) {
-            System.out.println(i);
             sum = sum + nums[i];
         }
 
         double res = sum;
 
         for (int i = k; i < nums.length; i++) {
-            sum += nums[i] - nums[i - k];
+            sum = sum + nums[i] - nums[i - k];
 
-//            System.out.println(i + " - " + (i - k));
-
-            res = Math.max(res, sum);
+            if (sum > res) {
+                res = sum;
+            }
         }
 
-        return 0;
+        return res / k;
+
     }
 
 //    /*
