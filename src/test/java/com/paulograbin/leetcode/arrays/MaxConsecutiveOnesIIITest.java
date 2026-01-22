@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class MaxConsecutiveOnesIIITest {
 
-    private MaxConsecutiveOnesIII max = new MaxConsecutiveOnesIII();
+    private final MaxConsecutiveOnesIII max = new MaxConsecutiveOnesIII();
 
     @Test
     void basic() {
@@ -13,6 +13,14 @@ class MaxConsecutiveOnesIIITest {
         int longest = max.longestOnes(a, 2);
 
         Assertions.assertThat(longest).isEqualTo(6);
+    }
+
+    @Test
+    void mine_0() {
+        int[] a = new int[]{1, 2};
+        int longest = max.longestOnes(a, 2);
+
+        Assertions.assertThat(longest).isEqualTo(2);
     }
 
     @Test

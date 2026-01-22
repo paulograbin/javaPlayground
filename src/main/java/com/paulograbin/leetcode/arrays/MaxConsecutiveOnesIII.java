@@ -3,18 +3,21 @@ package com.paulograbin.leetcode.arrays;
 public class MaxConsecutiveOnesIII {
 
     public int longestOnes(int[] nums, int k) {
-        int left = 0, right = 0;
-        int currentZeros = 0;
+        int left = 0;
+
+        int zeroCount = 0;
         int longest = 0;
 
-        for (right = 0; right < nums.length; right++) {
+
+        for (int right = 0; right < nums.length; right++) {
             if (nums[right] == 0) {
-                currentZeros++;
+                zeroCount++;
             }
 
-            while (currentZeros > k) {
+
+            while (zeroCount > k) {
                 if (nums[left] == 0) {
-                    currentZeros--;
+                    zeroCount--;
                 }
 
                 left++;
@@ -23,7 +26,6 @@ public class MaxConsecutiveOnesIII {
             if (longest < right - left + 1) {
                 longest = right - left + 1;
             }
-
         }
 
         return longest;
