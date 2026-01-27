@@ -12,9 +12,9 @@
     <description>Blank project for GraalVM</description>
 
     <properties>
-        <maven.compiler.target>23</maven.compiler.target>
-        <maven.compiler.source>23</maven.compiler.source>
-        <java.version>23</java.version>
+        <maven.compiler.target>25</maven.compiler.target>
+        <maven.compiler.source>25</maven.compiler.source>
+        <java.version>25</java.version>
         <start-class>com.paulograbin.App</start-class>
     </properties>
 
