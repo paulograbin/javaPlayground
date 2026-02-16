@@ -3,16 +3,17 @@ package com.paulograbin.leetcode.arrays;
 public class ReverseString {
 
     public void reverseString(char[] s) {
+        int start = 0;
         int end = s.length - 1;
 
-        for (int i = 0; i <= end; i++) {
-            char aux = s[i];
+        while (start <= end) {
+            char save = s[end];
 
-            s[i] = s[end];
-            s[end] = aux;
+            s[end] = s[start];
+            s[start] = save;
 
+            start++;
             end--;
         }
     }
-
 }
